@@ -1,0 +1,38 @@
+{
+  "manifest_version": 1,
+  "version": 1,
+  "type": "APP",
+  "desktop": {
+    "js": [
+      "https://unpkg.com/tippy.js@3/dist/tippy.all.min.js",
+      "js/desktop.js"
+    ],
+    "css": [
+      "css/desktop.css"
+    ]
+  },
+  "icon": "image/comment.png",
+  "config": {
+    "html": "html/config.html",
+    "js": [
+      "https://js.kintone.com/jquery/3.3.1/jquery.min.js",
+      "js/config.js"
+    ],
+    "css": [
+      "css/51-modern-default.css",
+      "css/config.css"
+    ],
+    "required_params": [
+      "name"
+    ]
+  },
+  "name": {
+    "en": "Profile tooltip Plug-in"
+  },
+  "description": {
+    "en": "指定したユーザー選択フィールドに、ユーザープロフィールのツールチップを表示するプラグインです。"
+  },
+  "homepage_url": {
+    "en": "https://github.com/kintone/SAMPLE-Profile-tooltip-Plug-in"
+  }
+}
