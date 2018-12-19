@@ -15,7 +15,7 @@ https://github.com/kintone/SAMPLE-Profile-tooltip-Plug-in/blob/master/LICENSE
     // Get each settings
     var CONFIG_NAME = CONFIG.name;
 
-    // 表示するユーザー情報の表示用タイトルとキー
+    // Keys and titles of user data to display
     var INFOLIST = [
         {key: 'email', title: 'Email'},
         {key: 'phone', title: 'Phone'},
@@ -28,11 +28,11 @@ https://github.com/kintone/SAMPLE-Profile-tooltip-Plug-in/blob/master/LICENSE
         var userFieldVal = record[CONFIG_NAME].value;
         if (userFieldVal.length === 0) {return event;}
 
-        // 対象のユーザー選択フィールド要素を取得
+        // Get the element of the specified User Selection field
         var targetField = kintone.app.record.getFieldElement(CONFIG_NAME);
         var targetLink = targetField.querySelectorAll('a');
 
-        // ユーザー情報からcodeだけを抜く
+        // Get the code (log in name) from the User data
         var fieldValCodeList = userFieldVal.map(function(value) {
             return value.code;
         });
@@ -53,14 +53,14 @@ https://github.com/kintone/SAMPLE-Profile-tooltip-Plug-in/blob/master/LICENSE
                 return table;
             }
 
-            // 取得したユーザーデータを、ユーザーフィールドの値の順番にソートする
+            // Sort the retrieved user data in order of how they are listed in the User Selection field
             respUserData.sort(function(x, y) {
                 return fieldValCodeList.indexOf(x.code) - fieldValCodeList.indexOf(y.code);
             });
 
-            // ツールチップに表示するhtmlのリスト生成
+            // Create the HTML to display in the tooltip
             var htmlContainer = respUserData.map(function(value, index) {
-                // フィールドの各値に識別用の属性を追加
+                // Add an identifier to each node
                 targetLink[index].setAttribute('data-template', index);
                 return createTableTag(value);
             });
