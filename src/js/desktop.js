@@ -7,12 +7,12 @@ https://github.com/kintone/SAMPLE-Profile-tooltip-Plug-in/blob/master/LICENSE
     'use strict';
     /* global tippy */
 
-    // Get plugin configuration settings
+    // Get plug-in configuration settings
     var CONFIG = kintone.plugin.app.getConfig(PLUGIN_ID);
     if (!CONFIG) {
         return false;
     }
-    // Get each settings
+    // Get each setting
     var CONFIG_NAME = CONFIG.name;
 
     // Keys and titles of user data to display
@@ -32,7 +32,7 @@ https://github.com/kintone/SAMPLE-Profile-tooltip-Plug-in/blob/master/LICENSE
         var targetField = kintone.app.record.getFieldElement(CONFIG_NAME);
         var targetLink = targetField.querySelectorAll('a');
 
-        // Get the code (log in name) from the User data
+        // Get the code (login name) from the user data
         var fieldValCodeList = userFieldVal.map(function(value) {
             return value.code;
         });
