@@ -30,7 +30,7 @@
     "en": "Profile tooltip Plug-in"
   },
   "description": {
-    "en": "指定したユーザー選択フィールドに、ユーザープロフィールのツールチップを表示するプラグインです。"
+    "en": "This plug-in displays tooltips next to users listed in the User Selection field when they are hovered over with a mouse."
   },
   "homepage_url": {
     "en": "https://github.com/kintone/SAMPLE-Profile-tooltip-Plug-in"
