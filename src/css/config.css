@@ -1,0 +1,7 @@
+/* MIT License */
+/* Copyright (c) 2018 Cybozu */
+/* https://github.com/kintone/SAMPLE-1-user-limit-plug-in/blob/master/LICENSE */
+
+.kintoneplugin-desc::first-letter {
+	text-transform: capitalize;
+}
