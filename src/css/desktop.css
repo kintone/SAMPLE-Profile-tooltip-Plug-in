@@ -3,11 +3,11 @@
 /* https://github.com/kintone/SAMPLE-Profile-tooltip-Plug-in/blob/master/LICENSE */
 
 .Tooltip-table {
-	border-collapse: separate;
-	border-spacing: 8px;
-	margin: 10px;
+  border-collapse: separate;
+  border-spacing: 8px;
+  margin: 10px;
 }
 
 .Tooltip-table tr {
-	text-align: left;
+  text-align: left;
 }
