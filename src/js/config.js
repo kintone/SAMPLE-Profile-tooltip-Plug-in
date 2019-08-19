@@ -8,6 +8,9 @@ jQuery.noConflict();
   'use strict';
   // Get configuration settings
   var CONF = kintone.plugin.app.getConfig(PLUGIN_ID);
+  var $form = $('.js-submit-settings');
+  var $cancelButton = $('.js-cancel-button');
+  var $name = $('select[name="js-select-name-field"]');
 
   function escapeHtml(htmlstr) {
     return htmlstr.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -16,55 +19,39 @@ jQuery.noConflict();
 
   function setDropDown() {
     // Retrieve field information, then set drop-down
-    return kintone.api(kintone.api.url('/k/v1/preview/app/form/fields', true), 'GET',
-      {'app': kintone.app.getId()}).then(function(resp) {
+    KintoneConfigHelper.getFields('USER_SELECT').then(function(resp) {
 
-      for (var key in resp.properties) {
-        if (!resp.properties.hasOwnProperty(key)) {
-          continue;
-        }
-        var prop = resp.properties[key];
+      resp.forEach(function(field) {
         var $option = $('<option>');
-
-        switch (prop.type) {
-          // Only pick User Selection field
-          case 'USER_SELECT':
-            $option.attr('value', prop.code);
-            $option.text(escapeHtml(prop.label));
-            $('#select_name_field').append($option.clone());
-            break;
-          default:
-            break;
-        }
-      }
+        $option.attr('value', field.code);
+        $option.text(escapeHtml(field.label));
+        $name.append($option.clone());
+      });
       // Set default values
-      $('#select_name_field').val(CONF.name);
-    }, function(resp) {
-      return alert('Failed to retrieve field(s) information');
+      $name.val(CONF.name);
+    }).catch(function(resp) {
+      alert('Failed to retrieve field(s) information');
     });
   }
 
-  $(document).ready(function() {
-    // Set drop-down list
-    setDropDown();
+  // Set drop-down list
+  setDropDown();
 
-    // Set input values when 'Save' button is clicked
-    $('#check-plugin-submit').click(function() {
-      var config = [];
-      var name = $('#select_name_field').val();
+  // Set input values when 'Save' button is clicked
+  $form.on('submit', function(e) {
+    e.preventDefault();
+    var config = [];
+    var name = $name.val();
 
-      // Check required fields
-      if (name === '') {
-        alert('Please set required field(s)');
-        return;
-      }
-      config.name = name;
+    config.name = name;
 
-      kintone.plugin.app.setConfig(config);
+    kintone.plugin.app.setConfig(config, function() {
+      alert('The plug-in settings have been saved. Please update the app!');
+      window.location.href = '/k/admin/app/flow?app=' + kintone.app.getId();
     });
-    // Process when 'Cancel' is clicked
-    $('#check-plugin-cancel').click(function() {
-      history.back();
-    });
+  });
+  // Process when 'Cancel' is clicked
+  $cancelButton.click(function() {
+    window.location.href = '/k/admin/app/' + kintone.app.getId() + '/plugin/';
   });
 })(jQuery, kintone.$PLUGIN_ID);
