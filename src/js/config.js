@@ -43,11 +43,6 @@ jQuery.noConflict();
     var config = [];
     var name = $name.val();
 
-    // Check required fields
-    if (name === '') {
-      alert('Please set required field(s)');
-      return;
-    }
     config.name = name;
 
     kintone.plugin.app.setConfig(config, function() {
