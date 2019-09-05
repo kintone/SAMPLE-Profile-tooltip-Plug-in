@@ -18,8 +18,8 @@ src/
 │        └──── desktop.css  
 └── js/  
 │        └──── config.js  
-│        └──── desktop.js 
-│        └──── kintone-config-helper.js
+│        └──── desktop.js  
+│        └──── kintone-config-helper.js  
 └── image/  
 │        └──── comment.png  
 └── manifest.json  
