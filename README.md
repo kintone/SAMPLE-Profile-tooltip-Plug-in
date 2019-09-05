@@ -10,16 +10,17 @@ This plug-in displays tooltips next to users listed in the User Selection field 
 This sample plug-in is created with the following directory structure.
 
 src/  
-├── html/  
+└── html/  
 │        └──── config.html  
-├── css/  
-│        ├──── 51-modern-default.css  
-│        ├──── config.css  
+└── css/  
+│        └──── 51-modern-default.css  
+│        └──── config.css  
 │        └──── desktop.css  
-├── js/  
-│        ├──── config.js  
-│        └──── desktop.js  
-├── image/  
+└── js/  
+│        └──── config.js  
+│        └──── desktop.js 
+│        └──── kintone-config-helper.js
+└── image/  
 │        └──── comment.png  
 └── manifest.json  
 
